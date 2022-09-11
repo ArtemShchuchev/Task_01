@@ -51,7 +51,7 @@ int main(int argc, char** argv)
             --m;
             file_wr << m_size[m] << std::endl;
 
-            j = (m == 0) ? 1 : m_size[m] - 1;
+            j = (m == 0) ? 1 : m_size[m] - 1; // начальное условие для индекса массива
 
             unsigned int size = m_size[m];
             do
@@ -65,7 +65,11 @@ int main(int argc, char** argv)
 
         file_wr.close();
     }
-    else std::cout << "Не удалось соранить файл: " << out_file << std::endl;
+    else
+    {
+        std::cout << "Не удалось соранить файл: " << out_file << std::endl;
+        return 3;
+    }
 
     memoryFree(massiv, MAS_NUM);
     return 0;
